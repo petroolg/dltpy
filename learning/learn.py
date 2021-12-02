@@ -310,7 +310,7 @@ def load_m4():
 
 
 def get_datapoints(dataset: str) -> Tuple[str, str, str, str]:
-    base = f"../input_datasets/{dataset}/vectors/"
+    base = f"../output/vectors/"
     return base + "return_datapoints_x.npy", base + "return_datapoints_y.npy", base + "param_datapoints_x.npy", base + "param_datapoints_y.npy"
 
 
@@ -364,12 +364,12 @@ if __name__ == '__main__':
                 y_true, y_pred = evaluate(model, test_loader, top_n=max(top_n_pred))
 
                 # If the prediction is "other" - ignore the result
-                idx_of_other = pickle.load(open(f'./input_datasets/{dataset}/ml_inputs/label_encoder.pkl', 'rb')).transform(['other'])[0]
-                idx = (y_true != idx_of_other) & (y_pred[:, 0] != idx_of_other)
+                # idx_of_other = pickle.load(open(f'../output/ml_inputs/label_encoder.pkl', 'rb')).transform(['other'])[0]
+                # idx = (y_true != idx_of_other) & (y_pred[:, 0] != idx_of_other)
 
                 for top_n in top_n_pred:
                     filename = f"{load_model.__name__}_{dataset}_{i}_{top_n}"
                     report(y_true, y_pred, top_n, filename)
-                    report(y_true[idx], y_pred[idx], top_n, f"{filename}_unfiltered")
+                    # report(y_true[top_n], y_pred[top_n], top_n, f"{filename}_unfiltered")
 
                 report_loss(losses, f"{load_model.__name__}_{dataset}_{i}_loss")
