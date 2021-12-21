@@ -97,10 +97,10 @@ There are only 2 datails you should know about:
 3) Create necessary dirs for intermediate files.
     From the project's root directory execute:
     ```shell
-      mkdir outpud/data
-      mkdir outpud/ml_inputs
-      mkdir outpud/models
-      mkdir outpud/vectors
+      mkdir output/data
+      mkdir output/ml_inputs
+      mkdir output/models
+      mkdir output/vectors
     ```
 4) After that you should be ready to execute the whole pipeline.
     From the root directory you can execute the following commands one by one:
